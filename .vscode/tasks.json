@@ -2,41 +2,81 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build authserver",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/identityservice/identityservice.csproj",
+                "${workspaceFolder}/AuthServer/AuthServer.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish",
+            "label": "publish authserver",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/identityservice/identityservice.csproj",
+                "${workspaceFolder}/AuthServer/AuthServer.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "watch",
+            "label": "watch authserver",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/identityservice/identityservice.csproj",
+                "${workspaceFolder}/AuthServer/AuthServer.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+
+        {
+            "label": "build protectedapiresource",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Resources Server/ProtectedAPIResource/ProtectedAPIResource.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish protectedapiresource",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/Resources Server/ProtectedAPIResource/ProtectedAPIResource.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch protectedapiresource",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "${workspaceFolder}/Resources Server/ProtectedAPIResource/ProtectedAPIResource.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         }
+
+
     ]
 }
