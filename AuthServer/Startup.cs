@@ -72,7 +72,24 @@ public void ConfigureServices(IServiceCollection services)
         .AddNewtonsoftJson();
 
     services.AddRazorPages();
-    services.AddOpenApiDocument(configure => { configure.Title = "Auth Server"; });
+	
+	//https://github.com/RicoSuter/NSwag/issues/869
+    services.AddOpenApiDocument(config =>
+{
+	config.DocumentName = "OpenAPI 3";
+	config.Title = "Auth Server Apis";
+	config.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT Token"));
+	//config.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT Token")); -> Replaced the line above with this with no difference
+	config.AddSecurity("JWT Token", Enumerable.Empty<string>(),
+		new OpenApiSecurityScheme()
+		{
+			Type = OpenApiSecuritySchemeType.ApiKey,
+			Name = nameof(Authorization),
+			In = OpenApiSecurityApiKeyLocation.Header,
+			Description = "Copy this into the value field: Bearer {token}"
+		}
+	);
+});
 
     _services = services;
 }
