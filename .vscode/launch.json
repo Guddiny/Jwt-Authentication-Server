@@ -15,7 +15,6 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build authserver",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/AuthServer/bin/Debug/netcoreapp3.1/AuthServer.dll",
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
@@ -31,7 +30,6 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build protectedapiresource",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}\\Resources Server\\ProtectedAPIResource\\bin\\Debug\\netcoreapp3.1\\ProtectedAPIResource.dll",
             "args": [],
             "env": {
@@ -41,6 +39,15 @@
             "cwd": "${workspaceFolder}\\Resources Server\\ProtectedAPIResource",
             "stopAtEntry": false,
             "enableStepFiltering": false
+        },
+        {
+            "name": "Docker .NET Core Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "netCore": {
+                "appProject": "${workspaceFolder}/Common/Common.csproj"
+            }
         }
     ],
     "compounds": [
