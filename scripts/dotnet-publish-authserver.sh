@@ -1,1 +1,2 @@
-dotnet publish ./src/AuthServer/src/AuthServer -c Release -o ./bin/Docker
+cd ./src/AuthServer/src/AuthServer
+dotnet publish  -c Release -o ./bin/Docker 
