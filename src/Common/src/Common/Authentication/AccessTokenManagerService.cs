@@ -8,6 +8,7 @@ using Microsoft.Extensions.Caching.Distributed;
 
 namespace Common.Authentication
 {
+      //if we have more than one instance or host our app on multiple servers, because we want access block token list on all instace and servers and we need to use distributed cache
     public class AccessTokenManagerService : IAccessTokenManagerService
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -28,7 +29,7 @@ namespace Common.Authentication
         public async Task DeactivateCurrentAccessTokenAsync()
             => await DeactivateAccessTokenAsync(await GetCurrentAccessTokenAsync());
 
-        //If there is any value for this token is cache this token revoked
+        //If there is any value for this token is cache this token will revoked - we store cancled token in redis cache if not exist token in our black list tokens in redis token is active
         public async Task<bool> CurrentAccessTokenIsActive(string token)
             => string.IsNullOrWhiteSpace(await _redisCache.GetStringAsync(GetKey(token)));
 
